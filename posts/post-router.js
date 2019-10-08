@@ -5,7 +5,7 @@ const db = require('../data/db-config.js');
 
 const router = express.Router();
 
-/* http://knexjs.org/#Builder-insert */
+/* http://knexjs.org/#Builder-insert */ 
 
 
 router.get('/', (req, res) => {
@@ -63,7 +63,7 @@ router.get('/', (req, res) => {
       .update(req.body)
       .then(count => {
         res.status(200).json(count);
-      })
+      }) //counts is the # updated records
       .catch(error => {
         // remember to handle the error
         res.status(500).json(error);
