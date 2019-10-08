@@ -5,16 +5,17 @@ const db = require('../data/db-config.js');
 
 const router = express.Router();
 
-
+/* http://knexjs.org/#Builder-insert */
 
 
 router.get('/', (req, res) => {
     // get the list of posts from the db
     // select * from posts
+    // same as db("posts")
     db.select('*')
       .from('posts') // all knex commands return a promise
       .then(posts => {
-        // send the list of posts to the client
+        // send an arry the list of posts to the client
         res.status(200).json(posts);
       })
       .catch(error => {
@@ -25,10 +26,10 @@ router.get('/', (req, res) => {
   
   router.get('/:id', (req, res) => {
     // select * from posts where id = req.params.id
-    db.select('*')
-      .from('posts')
+    // line 30 is same as line 15-16
+    db('posts')
       .where('id', '=', req.params.id)
-      .first()
+      .first()  /*< sam has having posts[0] in line 35, they both gives you only the obj rather than the obj in the array */
       .then(post => {
         // send the post to the client
         res.status(200).json(post);
@@ -112,5 +113,6 @@ module.exports = router;
 	• https://devhints.io/knex
     • http://knexjs.org/#Builder
         npm i knex sqlite3
+        npm run server
 
 */

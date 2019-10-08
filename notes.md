@@ -40,6 +40,15 @@ SQL = Structured **Query** Language. SQL is a Standard.
 
 Each DBMS will implement part of the SQL standard and add extra features on top.
 
+https://www.w3schools.com/Sql/tryit.asp?filename=trysql_select_top
+
+
+```sql
+SELECT CustomerName customer_Name , Country as Details FROM [Customers]
+```
+> changes Country to new column title of Details due to use of "as" , but you do not need "as" you can just put a space like how CustomerName changes to  customer_Name .
+
+
 Some SQL Commands:
 
 select categoryName Name, Description as Details from categories
@@ -67,11 +76,13 @@ FROM [Customers]
 where country = 'Germany' or country = 'Argentina'
 order by country, city;
 ```
+^^ this brings in country column first then city insted of the default customerId, a good way to show the fileds we ant to see in the beginning
 
 ```sql
 SELECT country, city, *
 FROM [Customers]
 where country in ('Germany', 'Argentina', 'Austria')
+/* ^same as where country = 'Germany' or country = 'Argentina' or country = 'Austria'*/
 order by country, city;
 ```
 
@@ -107,3 +118,6 @@ where categoryId = 9
 ## Connect to a DBMS from our API
 
 [API] <= JS => [Knex] <- SQL -> [DB Driver] <= DBMS Protocol => [DBMS]
+
+
+
